@@ -2,6 +2,80 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Basic React-redux
+
+Redux is a predictable state management library for java script applications
+
+create a react app using npx create-react-app
+Install redux and react-redux packages  by running following commands in terminal
+
+ the following are steps 
+
+ ### Store
+ .Define the the structure of the Store
+  Usually the createStore function from redux package is used. createStore take 
+  a reducer as an argument
+ ### Reducer
+ . Create Reducer--> reducers are responsible for updating the state in the 
+  store. Reducer takes two paramers current state and actions. We cannnot mutate
+  the state. We have to make a copy of the current state and update it.
+ ### Actions 
+ . Actions determines what kind of actions needs to be done. Action has mainly 
+   two properties type and payload which contains the data which needs to be updated. We can create function called actionCreators if we need to reuse
+   the actions. Action Types can also be exposed as components if we want to avoid hard coding
+ ### Installing Dependencies for Redux DevTools
+We will install the Redux DevTools extension to our dev dependencies using the commands shown below.
+
+Commands : npm install --save-dev redux-devtools-extension
+
+After installing the dependencies we will import the compose functionality from redux dev tools extension using
+
+import { composeWithDevTools } from ‘redux-devtools-extension’;
+
+and we will create our store with Redux DevTools add-on as follows
+
+const store = createStore(rootReducer, composeWithDevTools( ));    
+
+ ### useSelector  
+ . two access the values from the store we need to use a hook called             {useSelector} from the 'react-redux'package
+
+   const counter=useSelector((state)=>state.counter)
+
+### Provider
+ . For the entire application two have access to the store we can wrap the entire application with {provider} from 'react-redux' and pass store as 
+ an attribute.
+
+ ReactDOM.render(
+<Provider  store={store}>
+<React.StrictMode>
+<App />
+<React.StrictMode>
+</Provider>
+
+ )  
+
+ ### useDispatch
+
+  {useDispatch} hook from 'react-redux' is used to send action to the store
+
+  const dispatch=useDispact();
+
+
+  function increment (){
+   dispactch({
+   type:"increment",
+ // payload is optional
+   })
+
+  }
+
+
+
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
